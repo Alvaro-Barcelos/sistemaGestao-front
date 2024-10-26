@@ -1,0 +1,61 @@
+<br />
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12 centralizar topo">
+
+          <h3>Cadastro de Produto:</h3>
+          <br>
+          <mdb-form-control>
+            <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="produto.nome_produto" />
+            <label mdbLabel class="form-label" for="usuario">Nome</label>
+        </mdb-form-control>
+        <br>
+        <mdb-form-control>
+            <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="produto.marca" />
+            <label mdbLabel class="form-label" for="usuario">Marca</label>
+        </mdb-form-control>
+        
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="produto.preco_custo" />
+            <label mdbLabel class="form-label" for="usuario">Preco de custo</label>
+        </mdb-form-control>
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="produto.preco_venda" />
+            <label mdbLabel class="form-label" for="usuario">Preco de venda</label>
+        </mdb-form-control>
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="produto.quantidade" />
+            <label mdbLabel class="form-label" for="usuario">Quantidade</label>
+        </mdb-form-control>
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="date" id="usuario" class="form-control" [(ngModel)]="produto.data_validade" />
+            <label mdbLabel class="form-label" for="usuario">Data de validade</label>
+          </mdb-form-control>
+
+
+
+          <br /> <br />
+          <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="save()">
+            Salvar
+          </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

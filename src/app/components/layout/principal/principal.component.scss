@@ -1,0 +1,35 @@
+.navbar{
+    background-color: rgba(0, 102, 255, 0.671);
+    height: 60px;
+}
+
+a{
+    color: white;
+}
+.navbar ul li a{
+    color: white;
+}
+.sidebar {
+    position: fixed;
+    top: 60px; /* altura da navbar */
+    left: 0;
+    overflow-y: auto;
+    z-index: 1000;
+    background-color: rgba(0, 102, 255, 0.671);
+  }
+
+  .sidebar ul li:hover{
+    background-color: rgb(179, 179, 179);
+    transform: translateY(-3px);
+    transition: 0.3s;
+  }
+  .sidebar ul li a{
+    color: white;
+  }
+  .sidebar ul li{
+    border-top: 2px solid rgb(223, 221, 221);
+  }
+
+  .content {
+    margin-left: 250px; /* largura da sidebar */
+  }

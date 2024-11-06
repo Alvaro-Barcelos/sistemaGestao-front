@@ -1,55 +1,55 @@
-import { Component, EventEmitter, inject, Input, input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { Produto } from '../../../models/produto';
+import { Component, EventEmitter, inject, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Cliente } from '../../../models/cliente';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { ProdutodetailsComponent} from '../produtodetails/produtodetails.component';
+import { ClientedetailsComponent } from '../clientedetails/clientedetails.component';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ProdutoService } from '../../../services/produto.service';
+import { ClienteService } from '../../../services/cliente.service';
 import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-produtolist',
+  selector: 'app-clientelist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, ProdutodetailsComponent],
-  templateUrl: './produtolist.component.html',
-  styleUrl: './produtolist.component.scss'
+  imports: [RouterLink, MdbModalModule, ClientedetailsComponent],
+  templateUrl: './clientelist.component.html',
+  styleUrls: ['./clientelist.component.scss']
 })
-export class ProdutolistComponent {
+export class ClientelistComponent {
   data1 = new Date('2021-04-23T10:00:00.000Z');
-  lista: Produto[] = [];
-  produtoEdit: Produto = new Produto(0,"","",0,0,0,this.data1);
+  lista: Cliente[] = [];
+  clienteEdit: Cliente = new Cliente(0, "", "", "", this.data1, "", "", "", 0, "");
 
   @Input("esconderBotoes") esconderBotoes: boolean = false;
   @Output("retorno") retorno = new EventEmitter<any>();
 
   // ELEMENTOS DA MODAL
   modalService = inject(MdbModalService); // para conseguir abrir a modal
-  @ViewChild("modalProdutoDetalhe") modalProdutoDetalhe!: TemplateRef<any>;
+  @ViewChild("modalClienteDetalhe") modalClienteDetalhe!: TemplateRef<any>;
   modalRef!: MdbModalRef<any>;
 
-  produtoService = inject(ProdutoService);
+  clienteService = inject(ClienteService);
 
   constructor() {
     this.findAll();
 
-    let produtoNovo = history.state.produtoNovo;
-    let produtoEditado = history.state.produtoEditado;
+    let clienteNovo = history.state.clienteNovo;
+    let clienteEditado = history.state.clienteEditado;
 
-    if (produtoNovo != null) {
-      produtoNovo.id = 555;
-      this.lista.push(produtoNovo);
+    if (clienteNovo != null) {
+      clienteNovo.id = 555;
+      this.lista.push(clienteNovo);
     }
 
-    if (produtoEditado != null) {
+    if (clienteEditado != null) {
       let indice = this.lista.findIndex((x) => {
-        return x.id == produtoEditado.id;
+        return x.id == clienteEditado.id;
       });
-      this.lista[indice] = produtoEditado;
+      this.lista[indice] = clienteEditado;
     }
   }
 
   findAll() {
-    this.produtoService.findAll().subscribe({
+    this.clienteService.findAll().subscribe({
       next: lista => { 
         console.log(lista);
         this.lista = lista;
@@ -64,7 +64,7 @@ export class ProdutolistComponent {
     });
   }
 
-  deleteById(produto: Produto) {
+  deleteById(cliente: Cliente) {
     Swal.fire({
       title: 'Tem certeza que deseja deletar este registro?',
       icon: 'warning',
@@ -74,7 +74,7 @@ export class ProdutolistComponent {
       cancelButtonText: 'Não',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.produtoService.delete(produto.id).subscribe({
+        this.clienteService.delete(cliente.id).subscribe({
           next: mensagem => {
             Swal.fire({
               title: mensagem,
@@ -97,21 +97,21 @@ export class ProdutolistComponent {
   }
 
   new() {
-    this.produtoEdit = new Produto(0,"","",0,0,0,this.data1);
-    this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
+    this.clienteEdit = new Cliente(0, "", "", "", this.data1, "", "", "", 0, "");
+    this.modalRef = this.modalService.open(this.modalClienteDetalhe);
   }
 
-  edit(produto: Produto) {
-    this.produtoEdit = Object.assign({}, produto); // clonando para evitar referência de objeto
-    this.modalRef = this.modalService.open(this.modalProdutoDetalhe);
+  edit(cliente: Cliente) {
+    this.clienteEdit = Object.assign({}, cliente); // clonando para evitar referência de objeto
+    this.modalRef = this.modalService.open(this.modalClienteDetalhe);
   }
 
-  retornoDetalhe(produto: Produto) {
+  retornoDetalhe(cliente: Cliente) {
     this.findAll();
     this.modalRef.close();
   }
 
-  select(produto: Produto){
-    this.retorno.emit(produto);
+  select(cliente: Cliente){
+    this.retorno.emit(cliente);
   }
 }

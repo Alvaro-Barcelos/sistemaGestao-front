@@ -1,0 +1,140 @@
+<br />
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12 centralizar topo">
+
+          <h3>Cadastrar Venda:</h3>
+          
+        <br>
+        <mdb-form-control>
+            
+            @if(vendaProduto.produto == null){
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarProduto()">
+                    Buscar Produto
+                </button>
+            }@else{
+                <span class="text-primary"> Produto: {{vendaProduto.produto.nome_produto}}</span><br>
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarProduto()">
+                    Trocar Produto
+                </button>
+            }
+        </mdb-form-control>
+        <mdb-form-control>
+            
+            @if(vendaProduto.cliente == null){
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
+                    Buscar Cliente
+                </button>
+            }@else{
+                <span class="text-primary"> CLiente: {{vendaProduto.cliente.nome}}</span><br>
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
+                    Trocar Produto
+                </button>
+            }
+        </mdb-form-control>
+        <mdb-form-control>
+            
+            @if(vendaProduto.funcionario == null){
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarFuncionario()">
+                    Buscar funcionario
+                </button>
+            }@else{
+                <span class="text-primary"> funcionario: {{vendaProduto.funcionario.nome}}</span><br>
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarFuncionario()">
+                    Trocar funcionario
+                </button>
+            }
+        </mdb-form-control>
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="vendaProduto.quantidade" />
+            <label mdbLabel class="form-label" for="usuario">Quantidade</label>
+        </mdb-form-control>
+        <br>
+            <mdb-form-control>
+            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="vendaProduto.valor_total" />
+            <label mdbLabel class="form-label" for="usuario">Valor da Venda</label>
+          </mdb-form-control>
+          <br>
+          <mdb-form-control>
+          <input mdbInput type="date" id="usuario" class="form-control" [(ngModel)]="vendaProduto.data_venda" />
+          <label mdbLabel class="form-label" for="usuario">Data da venda</label>
+        </mdb-form-control>
+
+
+
+          <br /> <br />
+          <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="save()">
+            Salvar
+          </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<ng-template #modalProdutos>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modalRef.close()"
+        ></button>
+    </div>
+    <div class="modal-body">
+    
+        <app-produtolist [esconderBotoes]="true" (retorno)="retornoProduto($event)"></app-produtolist>
+    
+    </div>
+    
+</ng-template>
+
+
+<ng-template #modalClientes>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modalRef3.close()"
+        ></button>
+    </div>
+    <div class="modal-body">
+    
+        <app-clientelist [esconderBotoes]="true" (retorno)="retornoCliente($event)"></app-clientelist>
+    
+    </div>
+    
+</ng-template>
+
+
+<ng-template #modalFuncionarios>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+        <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modalRef3.close()"
+        ></button>
+    </div>
+    <div class="modal-body">
+    
+        <app-funcionariolist [esconderBotoes]="true" (retorno)="retornoFuncionario($event)"></app-funcionariolist>
+    
+    </div>
+    
+</ng-template>
+
+
+
+
+
+

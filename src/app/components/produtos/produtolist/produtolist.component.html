@@ -36,22 +36,34 @@
                     
         
                       <td>
-                        <button
-                                type="button"
-                                class="btn btn-primary btn-rounded btn-sm fw-bold"
-                                mdbRipple rippleColor="dark"
-                                mdbRipple (click)="edit(produto)"
-                                >
+                        @if(esconderBotoes){
+                          <button
+                          type="button"
+                          class="btn btn-primary btn-rounded btn-sm fw-bold"
+                          mdbRipple rippleColor="dark"
+                          mdbRipple (click)="select(produto)"
+                          >
+                    Selecionar
+                  </button>
+                        }@else{
+                            <button
+                            type="button"
+                            class="btn btn-primary btn-rounded btn-sm fw-bold"
+                            mdbRipple rippleColor="dark"
+                            mdbRipple (click)="edit(produto)"
+                            >
                           Editar
                         </button>
-                        <button
-                        type="button"
-                        class="btn btn-danger btn-rounded btn-sm fw-bold "
-                        mdbRipple rippleColor="dark"
-                        mdbRipple (click)="deleteById(produto)"
-                        >
-                  Apagar
-                </button>
+                          <button
+                          type="button"
+                          class="btn btn-danger btn-rounded btn-sm fw-bold "
+                          mdbRipple rippleColor="dark"
+                          mdbRipple (click)="deleteById(produto)"
+                          >
+                          Apagar
+                        </button>
+                        }
+
                       </td>
                     </tr>
                   }

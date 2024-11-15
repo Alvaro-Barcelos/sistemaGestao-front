@@ -3,3 +3,8 @@
     color: white ;
     border: 1px solid #dadddf;
 }
+
+.modal-xl .modal-body {
+    max-height: 70vh; /* Ajuste conforme necessário */
+    overflow-y: auto; /* Ativa rolagem se o conteúdo ultrapassar o limite */
+  }

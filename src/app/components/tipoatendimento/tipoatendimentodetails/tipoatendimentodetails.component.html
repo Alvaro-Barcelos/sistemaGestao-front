@@ -1,0 +1,22 @@
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 centralizar topo">
+      <h3>Cadastro de Tipo de Atendimento:</h3>
+      <br>
+      <mdb-form-control>
+        <input mdbInput type="text" id="descricao" class="form-control" [(ngModel)]="tipoatendimento.descricao" />
+        <label mdbLabel class="form-label" for="descricao">Descrição</label>
+      </mdb-form-control>
+      <br>
+      <mdb-form-control>
+        <input mdbInput type="number" id="preco" class="form-control" [(ngModel)]="tipoatendimento.preco" />
+        <label mdbLabel class="form-label" for="preco">Preço</label>
+      </mdb-form-control>
+      <br>
+      <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="save()">
+        Salvar
+      </button>
+    </div>
+  </div>
+</div>

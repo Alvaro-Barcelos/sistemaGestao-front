@@ -9,6 +9,10 @@ import { FuncionariolistComponent } from './components/funcionarios/funcionariol
 import { FuncionariodetailsComponent } from './components/funcionarios/funcionariodetails/funcionariodetails.component';
 import { VendalistComponent } from './components/venda/vendalist/vendalist.component';
 import { VendadetailsComponent } from './components/venda/vendadetails/vendadetails.component';
+import { AtendimentolistComponent } from './components/atendimentos/atendimentolist/atendimentolist.component';
+import { AtendimentodetailsComponent } from './components/atendimentos/atendimentodetails/atendimentodetails.component';
+import { TipoatendimentolistComponent } from './components/tipoatendimento/tipoatendimentolist/tipoatendimentolist.component';
+import { TipoatendimentodetailsComponent } from './components/tipoatendimento/tipoatendimentodetails/tipoatendimentodetails.component';
 
 
 export const routes: Routes = [
@@ -18,10 +22,16 @@ export const routes: Routes = [
         path: 'principal',
         component: PrincipalComponent,  
         children: [
-            { path: 'agenda', component: AgendaComponent },
-            { path: 'produtos', component: ProdutolistComponent },
-            { path: 'produtos/new', component: ProdutodetailsComponent },
-            { path: 'produtos/new/:id', component: ProdutodetailsComponent },
+            {path: 'atendimentos', component: AtendimentolistComponent},
+            {path: 'atendimentos/new',component: AtendimentodetailsComponent},
+            {path: 'atendimentos/new/:id', component: AtendimentodetailsComponent},
+            {path: 'tipoatendimento', component: TipoatendimentolistComponent},
+            {path: 'tipoatendimento/new',component: TipoatendimentodetailsComponent},
+            {path: 'tipoatendimento/new/:id', component: TipoatendimentodetailsComponent},
+            {path: 'agenda', component: AgendaComponent },
+            {path: 'produtos', component: ProdutolistComponent },
+            {path: 'produtos/new', component: ProdutodetailsComponent },
+            {path: 'produtos/new/:id', component: ProdutodetailsComponent },
             {path: 'clientes', component: ClientelistComponent},
             {path: 'clientes/new',component: ClientedetailsComponent},
             {path: 'clientes/new/:id', component:ClientedetailsComponent},

@@ -84,64 +84,71 @@ export class VendadetailsComponent {
   save() {
     // Verificar se a quantidade informada é maior do que a quantidade disponível no estoque
     if (this.vendaProduto.produto.quantidade < this.vendaProduto.quantidade) {
-      Swal.fire({
-        title: 'Estoque insuficiente',
-        text: 'Não há estoque suficiente para essa quantidade do produto.',
-        icon: 'error',
-        confirmButtonText: 'Ok',
-      });
-      return; // Não salvar a venda se a quantidade for maior do que o estoque
+        Swal.fire({
+            title: 'Estoque insuficiente',
+            text: 'Não há estoque suficiente para essa quantidade do produto.',
+            icon: 'error',
+            confirmButtonText: 'Ok',
+        });
+        return; // Não salvar a venda se a quantidade for maior do que o estoque
     }
-  
+
+    // Definir a data da venda como a data atual apenas para novas vendas
+    if (this.vendaProduto.id === 0 && !this.vendaProduto.data_venda) {
+        this.vendaProduto.data_venda = new Date(); // Defina a data de venda como a data atual para novas vendas
+    }
+
     if (this.vendaProduto.id > 0) {
-      // Atualiza a venda existente
-      this.vendaProdutoService.update(this.vendaProduto, this.vendaProduto.id).subscribe({
-        next: mensagem => {
-          Swal.fire({
-            title: mensagem,
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
-          this.router2.navigate(['venda'], { state: { vendaProdutoEditado: this.vendaProduto } });
-          this.retorno.emit(this.vendaProduto);
-          this.modalRef.close();
-        },
-        error: erro => {
-          Swal.fire({
-            title: 'Erro ao atualizar venda',
-            text: erro.error.message || erro.message || 'Erro desconhecido',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-          this.modalRef.close();
-        }
-      });
+        // Atualiza a venda existente
+        this.vendaProdutoService.update(this.vendaProduto, this.vendaProduto.id).subscribe({
+            next: mensagem => {
+                Swal.fire({
+                    title: mensagem,
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                });
+                this.router2.navigate(['venda'], { state: { vendaProdutoEditado: this.vendaProduto } });
+                this.retorno.emit(this.vendaProduto);
+                this.modalRef.close();
+            },
+            error: erro => {
+                Swal.fire({
+                    title: 'Erro ao atualizar venda',
+                    text: erro.error.message || erro.message || 'Erro desconhecido',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                });
+                this.modalRef.close();
+            }
+        });
     } else {
-      // Para novas vendas
-      this.vendaProdutoService.save(this.vendaProduto).subscribe({
-        next: mensagem => {
-          Swal.fire({
-            title: mensagem,
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
-          this.router2.navigate(['venda'], { state: { vendaProdutoNovo: this.vendaProduto } });
-          this.retorno.emit(this.vendaProduto);
-          this.resetVendaProduto();
-          this.modalRef.close();
-        },
-        error: erro => {
-          Swal.fire({
-            title: 'Erro ao cadastrar nova venda',
-            text: erro.error.message || erro.message || 'Erro desconhecido',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
-          this.modalRef.close();
-        }
-      });
+        // Para novas vendas
+        this.vendaProdutoService.save(this.vendaProduto).subscribe({
+            next: mensagem => {
+                Swal.fire({
+                    title: mensagem,
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                });
+                this.router2.navigate(['venda'], { state: { vendaProdutoNovo: this.vendaProduto } });
+                this.retorno.emit(this.vendaProduto);
+                this.resetVendaProduto();
+                this.modalRef.close();
+            },
+            error: erro => {
+                Swal.fire({
+                    title: 'Erro ao cadastrar nova venda',
+                    text: erro.error.message || erro.message || 'Erro desconhecido',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                });
+                this.modalRef.close();
+            }
+        });
     }
-  }
+}
+
+
 
 
   
@@ -161,7 +168,7 @@ resetVendaProduto() {
 
 
   buscarProduto(){
-    this.modalRef = this.modalService.open(this.modalProdutos, {modalClass: 'modal-lg'})
+    this.modalRef = this.modalService.open(this.modalProdutos, {modalClass: 'modal-xl'})
   }
 
   retornoProduto(produto: Produto){
@@ -170,7 +177,7 @@ resetVendaProduto() {
   }
 
   buscarCliente(){
-    this.modalRef2 = this.modalService.open(this.modalClientes, {modalClass: 'modal-lg'})
+    this.modalRef2 = this.modalService.open(this.modalClientes, {modalClass: 'modal-xl'})
   }
   retornoCliente(cliente: Cliente){
     this.vendaProduto.cliente = cliente;
@@ -179,7 +186,7 @@ resetVendaProduto() {
 
 
   buscarFuncionario() {
-    this.modalRef3 = this.modalService.open(this.modalFuncionarios, { modalClass: 'modal-lg' });
+    this.modalRef3 = this.modalService.open(this.modalFuncionarios, { modalClass: 'modal-xl' });
   }
   retornoFuncionario(funcionario: Funcionario){
     this.vendaProduto.funcionario = funcionario;

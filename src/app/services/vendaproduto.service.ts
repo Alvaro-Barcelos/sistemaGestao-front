@@ -32,4 +32,8 @@ export class VendaProdutoService {
   findById(id: number): Observable<VendaProduto>{
     return this.http.get<VendaProduto>(this.API+"/findById/"+id);
   }
+
+  getVendasByDate(year: number, month: number): Observable<VendaProduto[]> {
+    return this.http.get<VendaProduto[]>(`${this.API}/findByDate/${year}/${month}`);
+  }
 }

@@ -4,62 +4,65 @@
 
     <div class="col-lg-12 centralizar topo">
 
-          <h3>Cadastrar Venda:</h3>
+          <h3>Agendar horario:</h3>
           
         <br>
         <mdb-form-control>
             
-            @if(vendaProduto.produto == null){
-                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarProduto()">
-                    Buscar Produto
-                </button>
-            }@else{
-                <span class="text-primary"> Produto: {{vendaProduto.produto.nome_produto}}</span><br>
-                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarProduto()">
-                    Trocar Produto
-                </button>
-            }
-        </mdb-form-control>
-        <mdb-form-control>
-            
-            @if(vendaProduto.cliente == null){
-                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
-                    Buscar Cliente
-                </button>
-            }@else{
-                <span class="text-primary"> Cliente: {{vendaProduto.cliente.nome}}</span><br>
-                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
-                    Trocar Cliente
-                </button>
-            }
-        </mdb-form-control>
-        <mdb-form-control>
-            
-            @if(vendaProduto.funcionario == null){
+            @if(atendimento.funcionario == null){
                 <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarFuncionario()">
                     Buscar funcionario
                 </button>
             }@else{
-                <span class="text-primary"> Funcionario: {{vendaProduto.funcionario.nome}}</span><br>
+                <span class="text-primary"> funcionario: {{atendimento.funcionario.nome}}</span><br>
                 <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarFuncionario()">
                     Trocar funcionario
                 </button>
             }
         </mdb-form-control>
         <br>
+        <mdb-form-control>
+            
+            @if(atendimento.cliente == null){
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
+                    Buscar Cliente
+                </button>
+            }@else{
+                <span class="text-primary"> Cliente: {{atendimento.cliente.nome}}</span><br>
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscarCliente()">
+                    Trocar Cliente
+                </button>
+            }
+        </mdb-form-control>
+        <br>
+        <mdb-form-control>
+            
+            @if(atendimento.tipo_atendimento == null){
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscartipo()">
+                    Buscar Tipo atendimento
+                </button>
+            }@else{
+                <span class="text-primary"> Atendimento: {{atendimento.tipo_atendimento.descricao}}</span><br>
+                <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="buscartipo()">
+                    Trocar Tipo atendimento
+                </button>
+            }
+        </mdb-form-control>
+
+        <br>
             <mdb-form-control>
-            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="vendaProduto.quantidade" />
-            <label mdbLabel class="form-label" for="usuario">Quantidade</label>
+            <input mdbInput type="date" id="usuario" class="form-control" [(ngModel)]="atendimento.data_atendimento" />
+            <label mdbLabel class="form-label" for="usuario">Data atendimento</label>
         </mdb-form-control>
         <br>
             <mdb-form-control>
-            <input mdbInput type="number" id="usuario" class="form-control" [(ngModel)]="vendaProduto.valor_total" />
-            <label mdbLabel class="form-label" for="usuario">Valor da Venda</label>
+            <input mdbInput type="time" id="usuario" class="form-control" [(ngModel)]="atendimento.hora_atendimento" />
+            <label mdbLabel class="form-label" for="usuario">hora do atendimento</label>
           </mdb-form-control>
           <br>
           <mdb-form-control>
-          <input mdbInput type="date" id="usuario" class="form-control" [(ngModel)]="vendaProduto.data_venda" />
-          <label mdbLabel class="form-label" for="usuario">Data da venda</label>
+          <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="atendimento.observacao" />
+          <label mdbLabel class="form-label" for="usuario">Obeservacao</label>
         </mdb-form-control>
 
 
@@ -77,7 +80,7 @@
 
 
 
-<ng-template #modalProdutos>
+<ng-template #modalTipoAtendimento>
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
         <button
@@ -89,7 +92,7 @@
     </div>
     <div class="modal-body">
     
-        <app-produtolist [esconderBotoes]="true" (retorno)="retornoProduto($event)"></app-produtolist>
+        <app-tipoatendimentolist [esconderBotoes]="true" (retorno)="retornoTipoAtendimento($event)"></app-tipoatendimentolist>
     
     </div>
     

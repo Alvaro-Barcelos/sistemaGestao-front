@@ -6,14 +6,14 @@ import { Produto } from '../../../models/produto';
 import { Cliente } from '../../../models/cliente';
 import { Funcionario } from '../../../models/funcionario';
 import Swal from 'sweetalert2';
-import { RouterLink } from '@angular/router';
+
 import { VendadetailsComponent } from '../vendadetails/vendadetails.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-vendalist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, VendadetailsComponent, FormsModule],
+  imports: [ MdbModalModule, VendadetailsComponent, FormsModule],
   templateUrl: './vendalist.component.html',
   styleUrl: './vendalist.component.scss'
 })

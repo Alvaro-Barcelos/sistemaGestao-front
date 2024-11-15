@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Input, Output, TemplateRef, ViewChild 
 
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
-import { RouterLink } from '@angular/router';
+
 import Swal from 'sweetalert2';
 import { TipoatendimentodetailsComponent} from '../tipoatendimentodetails/tipoatendimentodetails.component'; // Alterado: Componente de detalhes de TipoAtendimento
 import { TipoAtendimento } from '../../../models/tipo-atendimento';
@@ -11,7 +11,7 @@ import { TipoAtendimentoService } from '../../../services/tipo-atendimento.servi
 @Component({
   selector: 'app-tipoatendimentolist', // Alterado: Nome do componente
   standalone: true,
-  imports: [RouterLink, MdbModalModule, TipoatendimentodetailsComponent], // Alterado: Usando TipoAtendimentodetailsComponent
+  imports: [ MdbModalModule, TipoatendimentodetailsComponent], // Alterado: Usando TipoAtendimentodetailsComponent
   templateUrl: './tipoatendimentolist.component.html', // Alterado: Nome do template
   styleUrls: ['./tipoatendimentolist.component.scss'] // Alterado: Nome do arquivo de estilo
 })

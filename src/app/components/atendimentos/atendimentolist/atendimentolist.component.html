@@ -23,6 +23,8 @@
                     <tr>
                         <th>Funcionario</th>
                         <th>Cliente</th>
+                        <th>Atendimento</th>
+                        <th>Preço</th>
                         <th>Dia</th>
                         <th>Hora</th>
                         <th>Observação</th>
@@ -34,6 +36,8 @@
                         <tr>
                         <td>{{ Atendimento.cliente.nome }}</td>
                         <td>{{ Atendimento.funcionario.nome }}</td>
+                        <td>{{  Atendimento.tipo_atendimento.descricao}}</td>
+                        <td>{{  Atendimento.tipo_atendimento.preco}}</td>
                         <td>{{ Atendimento.data_atendimento}}</td>
                         <td>{{ Atendimento.hora_atendimento }}</td>
                         <td>{{ Atendimento.observacao }}</td>

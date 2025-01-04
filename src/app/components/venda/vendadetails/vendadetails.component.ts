@@ -177,7 +177,9 @@ resetVendaProduto() {
   }
 
   buscarCliente(){
-    this.modalRef2 = this.modalService.open(this.modalClientes, {modalClass: 'modal-xl'})
+    this.modalRef2 = this.modalService.open(this.modalClientes, { 
+      modalClass: 'modal-fullscreen' 
+    });
   }
   retornoCliente(cliente: Cliente){
     this.vendaProduto.cliente = cliente;
@@ -186,7 +188,9 @@ resetVendaProduto() {
 
 
   buscarFuncionario() {
-    this.modalRef3 = this.modalService.open(this.modalFuncionarios, { modalClass: 'modal-xl' });
+    this.modalRef3 = this.modalService.open(this.modalFuncionarios, { 
+      modalClass: 'modal-fullscreen' 
+    });
   }
   retornoFuncionario(funcionario: Funcionario){
     this.vendaProduto.funcionario = funcionario;

@@ -14,6 +14,57 @@
                 />
             </div>
 
+            <div class="mb-3">
+                <!-- Seletor de tipo (Funcionario ou Cliente) -->
+                <div class="d-flex gap-2 align-items-center">
+                  <label for="tipo" class="form-label">Tipo:</label>
+                  <select id="tipo" class="form-select w-auto" [(ngModel)]="tipo" (change)="carregarNomes()">
+                    <option value="funcionario">Funcionário</option>
+                    <option value="cliente">Cliente</option>
+                  </select>
+              
+                  <!-- Seletor de nome (funcionário ou cliente) -->
+                  <label for="nome" class="form-label">Nome:</label>
+                  <select id="nome" class="form-select w-auto" [(ngModel)]="entidadeSelecionadaId">
+                    <option *ngFor="let entidade of listaNomes" [value]="entidade.id">
+                      {{ entidade.nome }}
+                    </option>
+                  </select>
+              
+                  <!-- Botão para buscar atendimentos -->
+                  <button class="btn btn-primary" (click)="buscarAtendimentosPorEntidade()">Buscar</button>
+                </div>
+              
+                <!-- Exibe a quantidade de atendimentos -->
+                <p *ngIf="totalAtendimentos !== null">
+                  Total de atendimentos para o {{ tipo }} {{ entidadeSelecionadaId }}: {{ totalAtendimentos }}
+                </p>
+              
+                <table *ngIf="listaAtendimentos.length > 0" class="table align-middle mb-0 bg-white">
+                  <thead class="table-dark">
+                      <tr>
+                          <th>Cliente</th>
+                          <th>Funcionário</th>
+                          <th>Data</th>
+                          <th>Hora</th>
+                          <th>Observação</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let atendimento of listaAtendimentos">
+                          <td>{{ atendimento.cliente.nome }}</td>
+                          <td>{{ atendimento.funcionario.nome }}</td>
+                          <td>{{ formatarData(atendimento.data_atendimento) }}</td>
+                          <td>{{ atendimento.hora_atendimento }}</td>
+                          <td>{{ atendimento.observacao }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+              
+                
+              </div>
+              
+
             <button type="button" class="btn btn-novo btn-rounded" mdbRipple (click)="new()">
                 Novo
             </button>
@@ -21,8 +72,8 @@
             <table class="table align-middle mb-0 bg-white">
                 <thead class="table-dark">
                     <tr>
-                        <th>Funcionario</th>
                         <th>Cliente</th>
+                        <th>Funcionario</th>
                         <th>Dia</th>
                         <th>Hora</th>
                         <th>Observação</th>
@@ -34,7 +85,7 @@
                         <tr>
                         <td>{{ Atendimento.cliente.nome }}</td>
                         <td>{{ Atendimento.funcionario.nome }}</td>
-                        <td>{{ Atendimento.data_atendimento}}</td>
+                        <td>{{ formatarData(Atendimento.data_atendimento) }}</td>
                         <td>{{ Atendimento.hora_atendimento }}</td>
                         <td>{{ Atendimento.observacao }}</td>
                         <td>

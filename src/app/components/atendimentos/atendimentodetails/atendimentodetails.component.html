@@ -50,15 +50,56 @@
         </mdb-form-control>
 
         <br>
-            <mdb-form-control>
-            <input mdbInput type="date" id="usuario" class="form-control" [(ngModel)]="atendimento.data_atendimento" />
-            <label mdbLabel class="form-label" for="usuario">Data atendimento</label>
-        </mdb-form-control>
-        <br>
-            <mdb-form-control>
-            <input mdbInput type="time" id="usuario" class="form-control" [(ngModel)]="atendimento.hora_atendimento" />
-            <label mdbLabel class="form-label" for="usuario">hora do atendimento</label>
-          </mdb-form-control>
+        <div class="mb-3">
+            <label for="data" class="form-label">Data do Atendimento</label>
+            <input
+              id="data"
+              type="date"
+              class="form-control"
+              [(ngModel)]="dataSelecionada"
+              (change)="buscarHorariosDisponiveis()"
+              [ngClass]="{ 
+                'date-ocupada': isDataOcupada(dataSelecionada), 
+                'date-disponivel': !isDataOcupada(dataSelecionada) && dataSelecionada 
+              }"
+            />
+          </div>
+          
+          <div *ngIf="horariosDisponiveis.length > 0 || horariosIndisponiveis.length > 0" class="mb-3">
+            <label for="horario" class="form-label">Horário</label>
+            <select
+              id="horario"
+              class="form-select"
+              [(ngModel)]="atendimento.hora_atendimento"
+            >
+              <!-- Exibir horários disponíveis -->
+              <option 
+                *ngFor="let horario of horariosDisponiveis"
+                [value]="horario"
+                [ngClass]="'date-disponivel'"
+              >
+                {{ horario }} (Disponível)
+              </option>
+              
+              <!-- Exibir horários indisponíveis -->
+              <option 
+                *ngFor="let horario of horariosIndisponiveis"
+                [value]="horario"
+                [disabled]="true"
+                [ngClass]="'date-indisponivel'"
+              >
+                {{ horario }} (Indisponível)
+              </option>
+            </select>
+          </div>
+          
+          
+          <div *ngIf="horariosDisponiveis.length === 0 && horariosIndisponiveis.length === 0 && dataSelecionada" class="text-danger">
+            Não há horários disponíveis ou indisponíveis para esta data.
+          </div>
+          
+          
+       
           <br>
           <mdb-form-control>
           <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="atendimento.observacao" />
@@ -76,7 +117,6 @@
 
   </div>
 </div>
-
 
 
 
@@ -135,9 +175,3 @@
     </div>
     
 </ng-template>
-
-
-
-
-
-

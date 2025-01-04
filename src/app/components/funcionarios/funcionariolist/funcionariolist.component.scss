@@ -1,6 +1,7 @@
 .card{
     background-color: #e2e5e7;
     border: 1px solid #babdbe;
+    width: 100%;
 }
 
 table{
@@ -17,3 +18,8 @@ table{
     color: white ;
     border: 1px solid #dadddf;
 }
+.modal-body {
+    max-height: 70vh; /* 70% da altura da viewport */
+    overflow-y: auto; /* Habilita rolagem vertical */
+  }
+  

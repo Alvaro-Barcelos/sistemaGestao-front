@@ -3,3 +3,19 @@
     color: white ;
     border: 1px solid #dadddf;
 }
+
+
+/* Cor para horários disponíveis */
+.date-disponivel {
+    background-color: #28a745; /* Verde */
+    color: white;
+  }
+  
+  /* Cor para horários indisponíveis */
+  .date-indisponivel {
+    background-color: #dc3545; /* Vermelho */
+    color: white;
+  }
+
+
+  

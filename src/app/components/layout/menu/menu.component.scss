@@ -1,57 +1,101 @@
-.navbar{
+/* Ajuste para barra lateral e conteúdo */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Remove rolagem geral */
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 60px; /* Navbar fixa */
+  width: 250px;
+  min-width: 250px; /* Evita que a barra lateral fique menor */
+  height: calc(100vh - 60px); /* Considera a altura da navbar */
+  overflow-y: auto; /* Apenas barra lateral pode rolar */
   background: linear-gradient(143deg, rgba(55,74,82,1) 0%, rgba(96,125,139,1) 35%, rgba(142,172,187,1) 100%);
-    height: 60px;
-    border-bottom: 3px solid #374a52;
+  z-index: 1000;
+}
+
+.content {
+  flex-grow: 1; /* Faz o conteúdo ocupar o espaço disponível */
+  min-width: 0; /* Corrige problemas de largura mínima */
+  overflow-y: auto; /* Rola apenas o conteúdo */
+  background: #e0e0e0;
+  padding: 16px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(143deg, rgba(55,74,82,1) 0%, rgba(96,125,139,1) 35%, rgba(142,172,187,1) 100%);
+  height: 60px;
+  border-bottom: 3px solid #374a52;
+}
+
+/* Corrige largura e comportamento geral da tabela */
+table {
+  width: 100%; /* Ocupa toda a largura disponível */
+  border-collapse: collapse; /* Remove bordas extras */
+}
+
+.sidebar ul li a{
+  color: white;
+}
+.sidebar ul li{
+  padding: 8px;
+}
+.sidebar ul li:hover{
+  background-color: rgb(110, 110, 110);
+  transform: translateY(-3px);
+  transition: 0.3s;
+  border-radius: 8px;
+
+}
+
+
+i{
+  background-color: #374a52;
+  padding: 8px;
+  border-radius: 10px;
+  color: white;
 }
 
 a{
-    color: white;
+  color: white;
 }
 .navbar ul li a{
-    color: white;
+  color: white;
 }
-.sidebar {
-    position: fixed;
-    top: 60px; /* altura da navbar */
-    left: 0;
-    overflow-y: auto;
-    z-index: 1000;
 
-    background: linear-gradient(143deg, rgba(55,74,82,1) 0%, rgba(96,125,139,1) 35%, rgba(142,172,187,1) 100%);
-    border-right: 3px solid #374a52;
-  }
 
-  .sidebar ul li:hover{
-    background-color: rgb(110, 110, 110);
-    transform: translateY(-3px);
-    transition: 0.3s;
-    border-radius: 8px;
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ccc; /* Bordas discretas */
+}
 
-  }
-  .sidebar ul li a{
-    color: white;
-  }
-  .sidebar ul li{
-    padding: 8px;
+button {
+  margin: 0 4px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+/* Ajuste de responsividade */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
   }
 
   .content {
-    margin-left: 250px; /* largura da sidebar */
-    background: #e0e0e0;
-    height: 100vh;
-  }
-
-  .nav-link {
-    pointer-events: auto; /* Garantir que os cliques sejam ativados */
-    cursor: pointer; /* Adiciona o cursor de clique */
-  }
-
-  i{
-    background-color: #374a52;
     padding: 8px;
-    border-radius: 10px;
-    color: white;
   }
-
-
-
+}

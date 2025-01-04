@@ -31,4 +31,7 @@ export class FuncionarioService {
   findById(id: number): Observable<Funcionario>{
     return this.http.get<Funcionario>(this.API+"/findById/"+id);
   }
+
+  
 }
+ 

@@ -7,7 +7,7 @@ export class Atendimento {
     funcionario!: Funcionario;
     cliente!: Cliente;
     tipo_atendimento!: TipoAtendimento;
-    data_atendimento!: Date;
+    data_atendimento: Date | string;
     hora_atendimento!: Date; 
     observacao!: string;
 

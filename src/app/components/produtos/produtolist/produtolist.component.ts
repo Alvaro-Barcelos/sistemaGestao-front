@@ -19,6 +19,7 @@ export class ProdutolistComponent {
   lista: Produto[] = [];
   produtoEdit: Produto = new Produto(0,"","",0,0,0,this.data1);
 
+
   @Input("esconderBotoes") esconderBotoes: boolean = false;
   @Output("retorno") retorno = new EventEmitter<any>();
 

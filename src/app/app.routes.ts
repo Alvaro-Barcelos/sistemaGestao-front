@@ -16,7 +16,7 @@ import { TipoatendimentodetailsComponent } from './components/tipoatendimento/ti
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'principal', pathMatch: 'full' },  
+    { path: '', redirectTo: 'principal/atendimentos', pathMatch: 'full' },  
 
     {
         path: 'principal',

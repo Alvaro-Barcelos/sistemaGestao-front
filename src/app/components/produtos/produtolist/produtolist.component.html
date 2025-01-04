@@ -17,6 +17,7 @@
                       <th>Marca</th>
                       <th>Preço de custo</th>
                       <th>Preço de venda</th>
+                      <th>Lucro</th>
                       <th>quantidade</th>
                       <th>Data de validade</th>
                       <th>Ações</th>
@@ -29,6 +30,7 @@
                         <td>{{ produto.marca }}</td>
                         <td>{{ produto.preco_custo }}</td>
                         <td>{{ produto.preco_venda }}</td>
+                        <td>{{ produto.preco_venda - produto.preco_custo }}</td>
                         <td>{{ produto.quantidade}}</td>
                         <td>{{ produto.data_validade}}</td>
                     
